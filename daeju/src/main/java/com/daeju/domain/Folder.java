@@ -31,10 +31,6 @@ import lombok.ToString;
 public class Folder {
 
 	@Id
-//	@GeneratedValue(
-//	        generator = "sequence_folder",
-//	        strategy = GenerationType.SEQUENCE
-//	    )
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int folderId;
 	
