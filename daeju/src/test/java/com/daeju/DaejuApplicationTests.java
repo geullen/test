@@ -1,7 +1,5 @@
 package com.daeju;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
@@ -11,24 +9,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.daeju.domain.User;
-import com.daeju.domain.User_Folder;
-import com.daeju.domain.User_Folder_Img;
-import com.daeju.persistence.UserFolderImgRepository;
-import com.daeju.persistence.UserFolderRepository;
 import com.daeju.persistence.UserRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 class DaejuApplicationTests {
 
+	/***
+	 * 테이블 생성 및 초기데이터 세팅
+	 */
 	@Autowired
 	private UserRepository userRepo;
-	
-	@Autowired
-	private UserFolderRepository userFolderRepo;
-	
-	@Autowired
-	private UserFolderImgRepository userFolderImgRepo;
 	
 	@Test
 	public void contextLoads() {
@@ -50,33 +41,9 @@ class DaejuApplicationTests {
 	public void testInsertUser() {
 		for(int i=1; i<=50; i++) {
 			User user = new User();
-			user.setName("이대주"+i);
+			user.setName("사용자"+i);
 			userRepo.save(user);
 		}
 		
-	}
-	
-	@Test
-	public void testInsertFolder() {
-		for(int i=1; i<=5; i++) {
-			User_Folder userFolder = new User_Folder();
-			userFolder.setId(1);
-			userFolder.setFolder_id(i);
-			userFolder.setFolder_name("폴더"+i);
-			userFolderRepo.save(userFolder);
-		}
-		
-		for(int i=1; i<=34; i++) {
-			User_Folder_Img userFolderImg = new User_Folder_Img();
-			if(i%5==0) {
-				userFolderImg.setFolder_id(5);
-			}else {
-				userFolderImg.setFolder_id(i%5);
-			}
-			userFolderImg.setImg_id(i);
-			userFolderImg.setImg_name("사진"+i);
-			userFolderImgRepo.save(userFolderImg);
-		
-		}
 	}
 }

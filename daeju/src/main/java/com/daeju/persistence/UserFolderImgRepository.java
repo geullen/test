@@ -2,11 +2,12 @@ package com.daeju.persistence;
 
 import java.util.List;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import com.daeju.domain.User_Folder_Img;
+import com.daeju.domain.Image;
 
-public interface UserFolderImgRepository extends CrudRepository<User_Folder_Img, Integer>{
+public interface UserFolderImgRepository extends CrudRepository<Image, Integer>{
+
+//	void save(List<Image> image);
 
 }
